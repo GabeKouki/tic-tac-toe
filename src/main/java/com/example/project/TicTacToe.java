@@ -1,4 +1,5 @@
 package com.example.project;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,15 @@ public class TicTacToe {
     public List<Field> getEmptyFields() {
         return fields;
     }
+
+    public String getPlayerX() {
+        return "X";
+    }
+
+    public String getPlayerO() {
+        return "O";
+    }
+
 }
 
 class Field {
@@ -22,4 +32,5 @@ class Field {
     public boolean isEmpty() {
         return owner == null;
     }
+
 }
