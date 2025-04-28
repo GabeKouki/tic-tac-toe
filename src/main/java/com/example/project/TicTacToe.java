@@ -39,6 +39,10 @@ public class TicTacToe {
         }
     }
 
+    public boolean isGameOver() {
+        return fields.stream().allMatch(field -> !field.isEmpty());
+    }
+
 }
 
 class Field {
