@@ -23,10 +23,10 @@ class TicTacToeTests {
         TicTacToe game = new TicTacToe();
         assertEquals("X", game.getCurrentPlayer(), "X should start the game");
 
-        game.takeField(0); 
+        game.takeField(0);
         assertEquals("O", game.getCurrentPlayer(), "O should go after X");
 
-        game.takeField(1); 
+        game.takeField(1);
         assertEquals("X", game.getCurrentPlayer(), "X should go after O");
     }
 
@@ -38,5 +38,16 @@ class TicTacToeTests {
         assertThrows(IllegalArgumentException.class, () -> {
             game.takeField(0);
         }, "Should not be able to take a field that is already taken.");
+    }
+
+    @Test
+    void gameEndsInTieWhenAllFieldsTaken() {
+        TicTacToe game = new TicTacToe();
+
+        for (int i = 0; i < 9; i++) {
+            game.takeField(i);
+        }
+
+        assertEquals(true, game.isGameOver(), "Game should be over when all fields are taken.");
     }
 }
