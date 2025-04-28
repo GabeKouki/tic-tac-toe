@@ -24,6 +24,21 @@ public class TicTacToe {
         return "O";
     }
 
+    private String currentPlayer = "X";
+
+    public String getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void takeField(int index) {
+        if (fields.get(index).isEmpty()) {
+            fields.get(index).setOwner(currentPlayer);
+            currentPlayer = currentPlayer.equals("X") ? "O" : "X";
+        } else {
+            throw new IllegalArgumentException("Field already taken!");
+        }
+    }
+
 }
 
 class Field {
@@ -33,4 +48,7 @@ class Field {
         return owner == null;
     }
 
+    public void setOwner(String player) {
+        this.owner = player;
+    }
 }
