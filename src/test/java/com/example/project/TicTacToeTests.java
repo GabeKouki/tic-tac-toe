@@ -9,4 +9,11 @@ class TicTacToeTests {
         TicTacToe game = new TicTacToe();
         assertEquals(9, game.getEmptyFields().size(), "A new game should have 9 empty fields.");
     }
+
+    @Test
+    void twoPlayersExist() {
+        TicTacToe game = new TicTacToe();
+        assertEquals("X", game.getPlayerX());
+        assertEquals("O", game.getPlayerO());
+    }
 }
