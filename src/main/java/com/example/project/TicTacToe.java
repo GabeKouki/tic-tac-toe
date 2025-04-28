@@ -34,7 +34,7 @@ public class TicTacToe {
         if (fields.get(index).isEmpty()) {
             fields.get(index).setOwner(currentPlayer);
 
-            if (checkRowWin()) {
+            if (checkWin()) {
                 winner = currentPlayer;
             } else {
                 currentPlayer = currentPlayer.equals("X") ? "O" : "X";
@@ -50,10 +50,8 @@ public class TicTacToe {
         return winner;
     }
 
-    private boolean checkRowWin() {
-        return (fieldsMatch(0, 1, 2) ||
-                fieldsMatch(3, 4, 5) ||
-                fieldsMatch(6, 7, 8));
+    private boolean checkWin() {
+        return (checkRowWin() || checkColumnWin());
     }
 
     private boolean fieldsMatch(int a, int b, int c) {
@@ -65,6 +63,18 @@ public class TicTacToe {
 
     public boolean isGameOver() {
         return winner != null || fields.stream().allMatch(field -> !field.isEmpty());
+    }
+
+    private boolean checkRowWin() {
+        return (fieldsMatch(0, 1, 2) ||
+                fieldsMatch(3, 4, 5) ||
+                fieldsMatch(6, 7, 8));
+    }
+    
+    private boolean checkColumnWin() {
+        return (fieldsMatch(0, 3, 6) ||
+                fieldsMatch(1, 4, 7) ||
+                fieldsMatch(2, 5, 8));
     }
 }
 
