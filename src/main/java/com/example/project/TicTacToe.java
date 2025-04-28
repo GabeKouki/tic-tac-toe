@@ -55,25 +55,19 @@ public class TicTacToe {
         return winner;
     }
 
+    private static final int[][] WINNING_COMBINATIONS = {
+        {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // rows
+        {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // columns
+        {0, 4, 8}, {2, 4, 6}             // diagonals
+    };
+    
     private boolean checkWin() {
-        return (checkRowWin() || checkColumnWin() || checkDiagonalWin());
-    }
-
-    private boolean checkRowWin() {
-        return (fieldsMatch(0, 1, 2) ||
-                fieldsMatch(3, 4, 5) ||
-                fieldsMatch(6, 7, 8));
-    }
-
-    private boolean checkColumnWin() {
-        return (fieldsMatch(0, 3, 6) ||
-                fieldsMatch(1, 4, 7) ||
-                fieldsMatch(2, 5, 8));
-    }
-
-    private boolean checkDiagonalWin() {
-        return (fieldsMatch(0, 4, 8) ||
-                fieldsMatch(2, 4, 6));
+        for (int[] combo : WINNING_COMBINATIONS) {
+            if (fieldsMatch(combo[0], combo[1], combo[2])) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean fieldsMatch(int a, int b, int c) {
