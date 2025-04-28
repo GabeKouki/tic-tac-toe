@@ -66,16 +66,30 @@ class TicTacToeTests {
     }
 
     @Test
-void playerWinsByCompletingColumn() {
-    TicTacToe game = new TicTacToe();
+    void playerWinsByCompletingColumn() {
+        TicTacToe game = new TicTacToe();
 
-    game.takeField(0); 
-    game.takeField(1); 
-    game.takeField(3); 
-    game.takeField(2); 
-    game.takeField(6);
+        game.takeField(0);
+        game.takeField(1);
+        game.takeField(3);
+        game.takeField(2);
+        game.takeField(6);
 
-    assertEquals(true, game.isGameOver(), "Game should be over when a player completes a column.");
-    assertEquals("X", game.getWinner(), "Player X should be the winner.");
-}
+        assertEquals(true, game.isGameOver(), "Game should be over when a player completes a column.");
+        assertEquals("X", game.getWinner(), "Player X should be the winner.");
+    }
+
+    @Test
+    void playerWinsByCompletingDiagonal() {
+        TicTacToe game = new TicTacToe();
+
+        game.takeField(0);
+        game.takeField(1);
+        game.takeField(4);
+        game.takeField(2);
+        game.takeField(8);
+
+        assertEquals(true, game.isGameOver(), "Game should be over when a player completes a diagonal.");
+        assertEquals("X", game.getWinner(), "Player X should be the winner.");
+    }
 }
