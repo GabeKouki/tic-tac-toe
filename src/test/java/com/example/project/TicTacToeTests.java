@@ -64,4 +64,18 @@ class TicTacToeTests {
         assertEquals(true, game.isGameOver(), "Game should be over when a player completes a row.");
         assertEquals("X", game.getWinner(), "Player X should be the winner.");
     }
+
+    @Test
+void playerWinsByCompletingColumn() {
+    TicTacToe game = new TicTacToe();
+
+    game.takeField(0); 
+    game.takeField(1); 
+    game.takeField(3); 
+    game.takeField(2); 
+    game.takeField(6);
+
+    assertEquals(true, game.isGameOver(), "Game should be over when a player completes a column.");
+    assertEquals("X", game.getWinner(), "Player X should be the winner.");
+}
 }
