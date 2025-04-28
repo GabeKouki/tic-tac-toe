@@ -51,7 +51,7 @@ public class TicTacToe {
     }
 
     private boolean checkWin() {
-        return (checkRowWin() || checkColumnWin());
+        return (checkRowWin() || checkColumnWin() || checkDiagonalWin());
     }
 
     private boolean fieldsMatch(int a, int b, int c) {
@@ -75,6 +75,11 @@ public class TicTacToe {
         return (fieldsMatch(0, 3, 6) ||
                 fieldsMatch(1, 4, 7) ||
                 fieldsMatch(2, 5, 8));
+    }
+
+    private boolean checkDiagonalWin() {
+        return (fieldsMatch(0, 4, 8) ||
+                fieldsMatch(2, 4, 6));
     }
 }
 
